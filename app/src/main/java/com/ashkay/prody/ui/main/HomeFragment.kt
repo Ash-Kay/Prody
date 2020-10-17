@@ -6,17 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
-import android.widget.TextView.OnEditorActionListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.ashkay.prody.R
 import com.ashkay.prody.adapters.TodoListAdapter
 import com.ashkay.prody.models.Todo
 import com.ashkay.prody.utils.broadcastReceiver.BatteryWatcher
 import com.google.android.material.textfield.TextInputEditText
-
 
 class HomeFragment : Fragment() {
 
@@ -44,10 +43,9 @@ class HomeFragment : Fragment() {
         rvTodoList = rootView.findViewById(R.id.rvTodoList)
         etNewTodo = rootView.findViewById(R.id.etNewTodo)
 
-        etNewTodo.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
+        etNewTodo.setOnEditorActionListener { _, actionId, _ ->
             var handled = false
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                //Perform your Actions here.
                 todoListAdapter.addNewTodo(Todo(etNewTodo.text.toString(), false, 0))
                 etNewTodo.clearFocus()
                 etNewTodo.text?.clear()
@@ -55,19 +53,14 @@ class HomeFragment : Fragment() {
                 handled = true
             }
             handled
-        })
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-//        val todos = ArrayList<Todo>()
-//        todos.add(Todo("wtf", false, 1))
-//        todos.add(Todo("wtf", true, 1))
         rvTodoList.adapter = todoListAdapter
-        todoListAdapter.addNewTodo(Todo("wtf", false, 1))
-        todoListAdapter.addNewTodo(Todo("wtf", true, 1))
         rvTodoList.layoutManager = LinearLayoutManager(context)
     }
 

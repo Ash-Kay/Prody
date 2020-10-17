@@ -3,11 +3,13 @@ package com.ashkay.prody
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.ashkay.prody.ui.main.AppListFragment
 import com.ashkay.prody.ui.main.CalendarFragment
 import com.ashkay.prody.ui.main.HomeFragment
+import com.ashkay.prody.utils.extensions.reduceDragSensitivity
 import com.ashkay.prody.utils.pageTransformers.ZoomOutPageTransformer
 
 class MainActivity : FragmentActivity() {
@@ -23,6 +25,7 @@ class MainActivity : FragmentActivity() {
         viewPager.adapter = pagerAdapter
         viewPager.setPageTransformer(ZoomOutPageTransformer())
         viewPager.currentItem = 1
+        viewPager.reduceDragSensitivity()
     }
 
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
