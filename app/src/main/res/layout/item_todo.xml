@@ -4,6 +4,7 @@
     android:id="@+id/cbTodo"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp"
+    android:layout_margin="8dp"
+    android:paddingStart="16dp"
     android:textSize="20sp"
     tools:text="Make 1 Million then 1 Billion" />

@@ -1,5 +1,7 @@
 package com.ashkay.prody.adapters
 
+import android.graphics.ColorMatrix
+import android.graphics.ColorMatrixColorFilter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ashkay.prody.R
 import com.ashkay.prody.interfaces.OnLaunchAppListener
 import com.ashkay.prody.models.App
+
 
 class AppListAdapter(private val appList: List<App>, private val listener: OnLaunchAppListener) :
     RecyclerView.Adapter<AppListAdapter.AppListViewHolder>() {
@@ -35,9 +38,12 @@ class AppListAdapter(private val appList: List<App>, private val listener: OnLau
         fun bind(item: App) {
             tvAppName.text = item.appName
             ivAppIcon.setImageDrawable(item.appIcon)
+            ivAppIcon.colorFilter = cf  //Adds Grayscale Effect
             appContainer.setOnClickListener {
                 listener.onLaunch(item, view)
             }
         }
     }
+
+    val cf = ColorMatrixColorFilter(ColorMatrix().apply { setSaturation(0f) })
 }
