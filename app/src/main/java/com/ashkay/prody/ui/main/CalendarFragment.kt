@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ashkay.prody.R
+import com.ashkay.prody.utils.CalendarService
 
 class CalendarFragment : Fragment() {
 
@@ -23,5 +24,7 @@ class CalendarFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
+        CalendarService.readCalendarEvents(requireContext(), 0)
     }
 }
