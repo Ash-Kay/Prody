@@ -33,6 +33,7 @@ class AppListAdapter(private val appList: List<App>, private val listener: OnLau
 
         private var tvAppName: TextView = view.findViewById(R.id.tvAppName)
         private var ivAppIcon: ImageView = view.findViewById(R.id.ivAppIcon)
+        private var tvAppUsage: TextView = view.findViewById(R.id.tvAppUsage)
         private var appContainer: View = view.findViewById(R.id.appContainer)
 
         fun bind(item: App) {
@@ -42,6 +43,7 @@ class AppListAdapter(private val appList: List<App>, private val listener: OnLau
             appContainer.setOnClickListener {
                 listener.onLaunch(item, view)
             }
+            tvAppUsage.text = item.minutesUsed.toString()
         }
     }
 
