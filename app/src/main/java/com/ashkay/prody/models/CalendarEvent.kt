@@ -8,9 +8,7 @@ data class CalendarEvent(
     val end: Date,
     val allDay: Boolean
 ) : Comparable<CalendarEvent> {
-    override fun toString(): String {
-        return "$title $begin $end $allDay";
-    }
+    override fun toString() = "$title $begin $end $allDay";
 
     override fun compareTo(other: CalendarEvent): Int {
         return begin.compareTo(other.begin);

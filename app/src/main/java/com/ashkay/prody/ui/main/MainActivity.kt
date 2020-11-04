@@ -1,20 +1,25 @@
-package com.ashkay.prody
+package com.ashkay.prody.ui.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
-import com.ashkay.prody.ui.main.AppListFragment
-import com.ashkay.prody.ui.main.CalendarFragment
-import com.ashkay.prody.ui.main.HomeFragment
+import com.ashkay.prody.R
+import com.ashkay.prody.databinding.MainActivityBinding
+import com.ashkay.prody.ui.appLauncher.AppLauncherFragment
+import com.ashkay.prody.ui.calendar.CalendarFragment
+import com.ashkay.prody.ui.home.HomeFragment
 import com.ashkay.prody.utils.extensions.reduceDragSensitivity
 import com.ashkay.prody.utils.pageTransformers.ZoomOutPageTransformer
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : FragmentActivity() {
 
     private lateinit var viewPager: ViewPager2
+
+    private lateinit var binding: MainActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +30,7 @@ class MainActivity : FragmentActivity() {
         viewPager.adapter = pagerAdapter
         viewPager.setPageTransformer(ZoomOutPageTransformer())
         viewPager.currentItem = 1
+        viewPager.offscreenPageLimit = 2
         viewPager.reduceDragSensitivity()
     }
 
@@ -33,7 +39,7 @@ class MainActivity : FragmentActivity() {
 
         override fun createFragment(position: Int): Fragment {
             return when (position) {
-                0 -> AppListFragment()
+                0 -> AppLauncherFragment()
                 1 -> HomeFragment()
                 2 -> CalendarFragment()
                 else -> HomeFragment()

@@ -10,8 +10,8 @@ class ApplicationFetcher {
 
     companion object {
 
-        fun getInstalledApplications(context: Context) : List<App> {
-            val list = mutableListOf<App>()
+        fun getInstalledApplications(context: Context) : Map<String, App> {
+            val map = mutableMapOf<String, App>()
 
             val manager = context.getSystemService(Context.USER_SERVICE) as UserManager
             val launcher = context.getSystemService(Context.LAUNCHER_APPS_SERVICE) as LauncherApps
@@ -29,12 +29,10 @@ class ApplicationFetcher {
                         activityName = activityInfo.name,
                         userSerial = profileSerial
                     )
-                    list.add(app)
+                    map[app.packageName] = app
                 }
             }
-
-            list.sortBy{it.appName}
-            return list
+            return map
         }
     }
 }

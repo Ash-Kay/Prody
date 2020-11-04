@@ -1,4 +1,4 @@
-package com.ashkay.prody.ui.main
+package com.ashkay.prody.ui.calendar
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ashkay.prody.R
+import com.ashkay.prody.ui.main.MainViewModel
 import com.ashkay.prody.utils.CalendarService
 
 class CalendarFragment : Fragment() {

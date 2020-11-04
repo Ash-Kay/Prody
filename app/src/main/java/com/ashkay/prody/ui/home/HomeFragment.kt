@@ -1,4 +1,4 @@
-package com.ashkay.prody.ui.main
+package com.ashkay.prody.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,10 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import com.ashkay.prody.R
 import com.ashkay.prody.adapters.TodoListAdapter
 import com.ashkay.prody.models.Todo
+import com.ashkay.prody.ui.main.MainViewModel
 import com.ashkay.prody.utils.broadcastReceiver.BatteryWatcher
 import com.google.android.material.textfield.TextInputEditText
 

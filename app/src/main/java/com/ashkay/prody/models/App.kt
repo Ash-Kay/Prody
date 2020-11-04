@@ -8,12 +8,10 @@ data class App(
     val packageName: String,
     val activityName: String,
     val userSerial: Long,
-    //TODO: remove @minutesUsed use @appUsage
-    var minutesUsed: Double? = null,
     var appUsage: AppUsage? = null
 )
 
 data class AppUsage(
-    val launchCount: Int,
-    val totalTimeInForeground: Long
+    var launchCount: Int,
+    var totalTimeInForeground: Long
 )
