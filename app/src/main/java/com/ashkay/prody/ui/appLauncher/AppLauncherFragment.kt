@@ -65,26 +65,7 @@ class AppLauncherFragment :
 
     private fun loadAppList() {
         val usageStats = getUsageStatistics(UsageStatsManager.INTERVAL_DAILY)
-        //TODO: FIX the data structure
         val apps = ApplicationFetcher.getInstalledApplications(requireContext())
-
-//        apps.forEach {
-//            println(it.appName)
-//        }
-//
-//        println("================================================================")
-//
-//        usageStats?.forEach {
-//            println(it?.packageName)
-//        }
-
-//        apps.forEach { app ->
-//            usageStats?.forEach {
-//                if (it != null && app.packageName == it.packageName) {
-//                    app.minutesUsed = it.totalTimeInForeground / 60000.0
-//                }
-//            }
-//        }
 
         usageStats?.forEach {
             if (it != null) {
@@ -108,7 +89,7 @@ class AppLauncherFragment :
         launcher.startMainActivity(componentName, userHandle, view.clipBounds, null)
     }
 
-    private fun getUsageStatistics(intervalType: Int): List<UsageStats?>? {
+    private fun getUsageStatistics(intervalType: Int): List<UsageStats?> {
         // Get the app statistics since one year ago from the current time.
         val cal: Calendar = Calendar.getInstance()
         val mUsageStatsManager =

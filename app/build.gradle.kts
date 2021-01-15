@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.ashkay.prody"
-        minSdkVersion(21)
+        minSdkVersion(22)
         targetSdkVersion(30)
         versionCode = 1
         versionName = "1.0"
@@ -61,7 +61,6 @@ dependencies {
     implementation(Android.constraintLayout)
     implementation(Android.swipeRefreshLayout)
     implementation(Android.fragmentKtx)
-//    kapt(Android.databinding)
 
     /* ====================================================
     *                    Utils/Others
